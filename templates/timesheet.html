@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bootstrap Table with Add and Delete Row Feature</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<!--Import materialize.css-->
+<link rel="stylesheet" href="../static/CSS/materialize.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+<link rel="stylesheet" href="../static/CSS/style.css">
+</head>
+
+<body>
+    <!-- Navbar or header -->
+<div class="navbar-fixed">
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#!" class="brand-logo"><img class="responsive-img" style="width: 200px;" src="https://singlepointgi.com/wp-content/uploads/2016/01/SinglePoint@2x.png" alt="MSU Logo">
+     </a>
+        <ul class="right hide-on-med-and-down">
+      
+        </ul>
+      </div>
+    </nav>
+  </div>
+<!-- Modal for inserting user inputs -->
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+             <div class="row">
+        <form action="http://127.0.0.1:6011/" method="post">
+            <div class="row">
+                <div class="input-field col s6">
+                  <input required="" placeholder="Placeholder" id="companyname" name="companyname" type="text" class="validate">
+                  <label for="first_name">Company Name</label>
+                </div>
+                <div class="input-field col s6">
+                  <input required="" id="last_name" type="text" name="date" class="validate datepicker">
+                  <label for="last_name">Date</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s6">
+                  <input required="" placeholder="Placeholder" id="printname" name="printname" type="text" class="validate">
+                  <label for="first_name">Print Name</label>
+                </div>
+                </div>
+              <div class="row">
+                    <div class="input-field col s12">
+                        <input required=""  id="idverified" type="text" name="idverified" class="">
+                        <label for="idverified"  >ID Verified</label>
+              </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input required="" id="timein" type="text" name="timein" class="timepicker">
+                  <label for="email">Time IN</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input required="" id="timeout" type="text" name="timeout" class="timepicker">
+                  <label for="email">Time OUT</label>
+                </div>
+              </div>
+            <input type="submit" class="btn" value="Submit">
+          </form>
+        </div>
+   </div>
+   </div>
+
+<!-- button to trigger model -->
+    <div class="container">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-8"><h2>Time<b>Sheet</b></h2></div>
+                    <div class="col-sm-4">
+                        <button type="button" class="btn btn-info modal-trigger" href="#modal1"> <i class="fa fa-plus"></i> Add New</button>
+                    </div>
+                </div>
+            </div>          
+            <table class="table table-bordered" id="timesheettable">
+                <thead>
+                    <tr>
+                        <th>Company Name</th></th>
+                        <th>Date</th>
+                        <th>Print Name</th>
+                        <th>ID Verified</th>
+                        <th>Time In</th>
+                        <th>Time Out</th>
+                    </tr>
+                </thead>
+                <!-- table body -->
+                  <tbody>
+                        {% for item in data %}
+                   <tr>
+                    <td>{{item[1]}}</td>
+                    <td>{{item[2]}}</td>
+                        <td>{{item[3]}}</td>
+                    <td>{{item[4]}}</td>
+                        <td>{{item[5]}}</td>
+                        <td>{{item[6]}}</td>
+                    {% endfor %}
+                       </tr>
+                    </tbody>
+            </table>
+            <div class="col-md-12 center text-center">
+                    <span class="left " id="total_reg"></span>
+                        <ul class="pagination pager" id="myPager"></ul>
+                      </div>
+        </div>
+    </div>     
+<!-- javascript at end of page to reduce load -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="../static/js/materialize.min.js"></script>
+  <script type="text/javascript" src="https://cdn.rawgit.com/pinzon1992/materialize_table_pagination/f9a8478f/js/pagination.js"></script>
+  <script type="text/javascript" src="../static/js/app.js"></script>
+
+</body>
+</html>   
